@@ -46,9 +46,11 @@ CLASS zcl_poo_001_clase03 IMPLEMENTATION.
       IMPORTING
         ev_cntr_type = DATA(lv_cntr_type)
     ).
+    zcl_poo_001_clase02=>currency = 'USD'.
 
     out->write( |{ lv_client } - { lv_status } - { lv_process }| ).
     out->write( lv_cntr_type ).
+    out->write( lo_contract->currency ).
 
   ENDMETHOD.
 ENDCLASS.
