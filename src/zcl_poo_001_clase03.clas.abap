@@ -39,7 +39,16 @@ CLASS zcl_poo_001_clase03 IMPLEMENTATION.
           ev_client = DATA(lv_client)
       ).
     ENDIF.
+
+*    INSTANCIAR OBJETOS ESTÁTICOS
+    zcl_poo_001_clase02=>set_cntr_type( iv_cntr_type = 'Construction' ).
+    zcl_poo_001_clase02=>get_cntr_type(
+      IMPORTING
+        ev_cntr_type = DATA(lv_cntr_type)
+    ).
+
     out->write( |{ lv_client } - { lv_status } - { lv_process }| ).
+    out->write( lv_cntr_type ).
 
   ENDMETHOD.
 ENDCLASS.
