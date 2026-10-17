@@ -10,8 +10,6 @@ CLASS zcl_poo_001_clase03 DEFINITION
   PRIVATE SECTION.
 ENDCLASS.
 
-
-
 CLASS zcl_poo_001_clase03 IMPLEMENTATION.
 
 
@@ -47,6 +45,10 @@ CLASS zcl_poo_001_clase03 IMPLEMENTATION.
         ev_cntr_type = DATA(lv_cntr_type)
     ).
     zcl_poo_001_clase02=>currency = 'USD'.
+    DATA(lv_client_name) = lo_contract->get_client_name( iv_client_id = '01' ).
+    IF NOT lo_contract->get_client_name( iv_client_id = '01' ) IS INITIAL.
+      out->write( lo_contract->get_client_name( iv_client_id = '01' ) ).
+    ENDIF.
 
     out->write( |{ lv_client } - { lv_status } - { lv_process }| ).
     out->write( lv_cntr_type ).
