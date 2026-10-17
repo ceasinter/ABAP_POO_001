@@ -4,6 +4,19 @@ CLASS zcl_poo_001_clase02 DEFINITION
   CREATE PUBLIC .
 
   PUBLIC SECTION.
+
+*TIPOS DE DATOS CON CLASES
+    TYPES: BEGIN OF ty_address,
+             country     TYPE string,
+             city        TYPE string,
+             postal_code TYPE string,
+             region      TYPE string,
+             street      TYPE string,
+             number      TYPE string,
+           END OF ty_address,
+
+           tty_address TYPE TABLE OF ty_address.
+
 *    ATRIBUTO ESTÁTICO
     CLASS-DATA currency TYPE c LENGTH 3.
 
@@ -17,6 +30,7 @@ CLASS zcl_poo_001_clase02 DEFINITION
     METHODS get_client EXPORTING ev_client TYPE string.
     METHODS get_client_name IMPORTING iv_client_id          TYPE string
                             RETURNING VALUE(rv_client_name) TYPE string.
+    METHODS set_address IMPORTING it_address TYPE ty_address.
 
 *    METODO ESTÁTICO
     CLASS-METHODS: set_cntr_type IMPORTING iv_cntr_type TYPE string,
@@ -59,6 +73,10 @@ CLASS zcl_poo_001_clase02 IMPLEMENTATION.
       WHEN '02'.
         rv_client_name = 'Cliente 02..: Mariana del Valle Belizario Angarita'.
     ENDCASE.
+  ENDMETHOD.
+
+  METHOD set_address.
+
   ENDMETHOD.
 
 ENDCLASS.

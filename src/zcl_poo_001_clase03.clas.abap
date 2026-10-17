@@ -20,6 +20,9 @@ CLASS zcl_poo_001_clase03 IMPLEMENTATION.
 *  lo_contract = new #( ).
     DATA(lo_contract) = NEW zcl_poo_001_clase02(  ).
     DATA lv_process TYPE string.
+    DATA: lt_address TYPE zcl_poo_001_clase02=>tty_address,
+          ls_address TYPE zcl_poo_001_clase02=>ty_address.
+
 
     IF lo_contract IS BOUND.
       lo_contract->set_client(
